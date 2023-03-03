@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calculadora de Verbas Rescisórias</title>
+</head>
+<body>
+	<h1>Calculadora de Verbas Rescisórias</h1>
+	<form>
+		<label for="salario">Salário:</label>
+		<input type="text" id="salario" name="salario"><br>
+
+		<label for="dias_trabalhados">Dias trabalhados:</label>
+		<input type="text" id="dias_trabalhados" name="dias_trabalhados"><br>
+
+		<label for="aviso_previo">Aviso prévio:</label>
+		<select id="aviso_previo" name="aviso_previo">
+			<option value="0">Não</option>
+			<option value="1">Sim</option>
+		</select><br>
+
+		<label for="decimo_terceiro">Décimo terceiro:</label>
+		<select id="decimo_terceiro" name="decimo_terceiro">
+			<option value="0">Não</option>
+			<option value="1">Sim</option>
+		</select><br>
+
+		<label for="ferias">Férias:</label>
+		<select id="ferias" name="ferias">
+			<option value="0">Não</option>
+			<option value="1">Sim</option>
+		</select><br>
+
+		<button type="button" onclick="calcular()">Calcular</button><br>
+
+		<label for="total">Valor total:</label>
+		<input type="text" id="total" name="total" disabled><br>
+	</form>
+
+	<script>
+		function calcular() {
+			var salario = parseFloat(document.getElementById("salario").value);
+			var dias_trabalhados = parseInt(document.getElementById("dias_trabalhados").value);
+			var aviso_previo = parseInt(document.getElementById("aviso_previo").value);
+			var decimo_terceiro = parseInt(document.getElementById("decimo_terceiro").value);
+			var ferias = parseInt(document.getElementById("ferias").value);
+
+			var total = (salario * dias_trabalhados / 30) + (salario * aviso_previo * 30 / 100) + (salario * decimo_terceiro / 12) + (salario * ferias / 12);
+
+			document.getElementById("total").value = total.toFixed(2);
+		}
+	</script>
+</body>
+</html>
